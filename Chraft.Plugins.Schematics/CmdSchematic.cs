@@ -54,20 +54,26 @@ namespace Chraft.Plugins.Schematics
 
         public void Help(IClient client)
         {
-            /*client.SendMessage("/schematic list [pageNumber] -");
-            client.SendMessage("    display a list of available schematics");
-            client.SendMessage("/schematic place <schematic name> [x|z|xz] -");
-            client.SendMessage("    place the specified schematic at current position");
-            client.SendMessage("    and rotate it by X, Z or X & Z axis (optional)");
-            client.SendMessage("/schematic info <schematic name> -");
-            client.SendMessage("    display the info about specified schematic");
-            client.SendMessage("/schematic undo -");
-            client.SendMessage("    revert the changes made by the last schematic");*/
-
             client.SendMessage("/schematic list [pageNumber] - display a list of available schematics");
             client.SendMessage("/schematic place <schematic name> [x|z|xz] - place the specified schematic at current position and rotate it by X, Z or X & Z axis (optional)");
             client.SendMessage("/schematic info <schematic name> - display the info about specified schematic");
             client.SendMessage("/schematic undo - revert the changes made by the last schematic");
+        }
+
+        public string AutoComplete(IClient client, string str)
+        {
+            var args = new[] {"list", "place", "info", "undo"};
+            if (string.IsNullOrEmpty(str.Trim()))
+                return string.Join("\0", args);
+
+            if (str.TrimStart().IndexOf(' ') != -1)
+                return string.Empty;
+
+            var sb = new StringBuilder();
+            foreach (var a in args)
+                if (a.StartsWith(str.Trim(), StringComparison.OrdinalIgnoreCase))
+                    sb.Append(a).Append('\0');
+            return sb.ToString();
         }
 
         public void Use(IClient client, string commandName, string[] tokens)

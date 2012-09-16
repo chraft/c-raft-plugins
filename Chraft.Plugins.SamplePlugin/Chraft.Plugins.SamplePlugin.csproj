@@ -44,9 +44,11 @@
   <ItemGroup>
     <Reference Include="ChraftUtilities">
       <HintPath>..\lib\ChraftUtilities.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PluginSystem">
       <HintPath>..\lib\PluginSystem.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

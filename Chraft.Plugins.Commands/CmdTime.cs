@@ -73,6 +73,22 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/time <Sunrise | Day | Sunset | Night | Raw> - Sets the time.");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            var args = new[] { "sunrise", "day", "sunset", "night" };
+            if (string.IsNullOrEmpty(str.Trim()))
+                return string.Join("\0", args);
+
+            if (str.TrimStart().IndexOf(' ') != -1)
+                return string.Empty;
+
+            var sb = new System.Text.StringBuilder();
+            foreach (var a in args)
+                if (a.StartsWith(str.Trim(), System.StringComparison.OrdinalIgnoreCase))
+                    sb.Append(a).Append('\0');
+            return sb.ToString();
+        }
+
         public string Name
         {
             get { return "time"; }

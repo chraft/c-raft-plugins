@@ -65,5 +65,10 @@ namespace Chraft.Plugins.Commands
         {
             client.SendMessage("/version - output the version of the server");
         }
+
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
+        }
     }
 }

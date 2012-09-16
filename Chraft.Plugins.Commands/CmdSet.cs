@@ -72,6 +72,11 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/set <Block> - Sets the selected cuboid to <Block>");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
+        }
+
         public string Name
         {
             get { return "set"; }

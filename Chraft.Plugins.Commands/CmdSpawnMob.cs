@@ -98,6 +98,11 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/spawnmob <Mob> [Amount] - Spawns a mob at your position.");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
+        }
+
         public string Name
         {
             get { return "spawnmob"; }

@@ -42,6 +42,11 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/pos1 - Sets the first cuboid position to your current location.");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
+        }
+
         public string Name
         {
             get { return "pos1"; }
@@ -81,6 +86,11 @@ namespace Chraft.Plugins.Commands
         public void Help(IClient client)
         {
             client.SendMessage("/pos2 - Sets the first cuboid position to your current location.");
+        }
+
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
         }
 
         public string Name

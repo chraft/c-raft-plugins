@@ -103,6 +103,17 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/givexp [Player] <amount> - gives the player an experience");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            if (string.IsNullOrEmpty(str.Trim()))
+                return string.Empty;
+
+            if (str.TrimStart().IndexOf(' ') != -1)
+                return string.Empty;
+
+            return PluginSystem.Commands.AutoComplete.GetPlayers(client, str.Trim());
+        }
+
         public string Name
         {
             get { return "givexp"; }

@@ -83,6 +83,17 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/mute <Target> - Mutes or unmutes <Target>.");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            if (string.IsNullOrEmpty(str.Trim()))
+                return string.Empty;
+
+            if (str.TrimStart().IndexOf(' ') != -1)
+                return string.Empty;
+
+            return PluginSystem.Commands.AutoComplete.GetPlayers(client, str.Trim());
+        }
+
         public string Name
         {
             get { return "mute"; }

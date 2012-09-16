@@ -47,6 +47,11 @@ namespace Chraft.Plugins.Commands
             client.SendMessage("/sethealth <Health> - Sets your health to <Health>");
         }
 
+        public string AutoComplete(IClient client, string str)
+        {
+            return string.Empty;
+        }
+
         public string Name
         {
             get { return "sethealth"; }
